@@ -33,6 +33,7 @@ const SOURCES = [
   { type: 'budget', label: 'BUDGET / LAW', title: '국가재정법', desc: '중기사업계획서·편성지침·예산요구서·국회 제출 기한, 예비타당성조사, 총사업비 관리의 기본 근거.', href: LINKS.nfa, cta: '국가법령정보센터' },
   { type: 'budget', label: 'BUDGET / GUIDE', title: '2027년도 예산안 편성 및 기금운용계획안 작성 세부지침', desc: '비목별 편성 기준과 단가. 기획예산처 예산기준과, 2026.7.20. 게시.', href: LINKS.guide2027, cta: '기획예산처 게시물' },
   { type: 'budget', label: 'BUDGET / SCALE', title: '총사업비 관리지침', desc: '2년 이상 대규모 사업의 단계별 총사업비 협의·변경 절차. 기획예산처 훈령, 2026.5.11. 발령.', href: LINKS.totalCost, cta: '지침 원문' },
+  { type: 'budget', label: 'BUDGET / LECTURE', title: '강의 노트: 국가예산 편성과 전략적 예산 확보 방안', desc: '연간 예산 순기별로 예산실의 시각과 우리가 할 일, 국회 심의 대응, 예산 확보 전략 세 가지를 정리. 2026.11. 강의 녹취 기반.', href: 'lecture.html', cta: '강의 노트 열기', internal: true },
   { type: 'budget', label: 'BUDGET / DECREE', title: '국가재정법 시행령', desc: '총사업비 관리 대상 범위(제21조) 등 법률의 세부 기준.', href: LINKS.nfaDecree, cta: '시행령 원문' },
   { type: 'digital', label: 'DIGITAL / GUIDE', title: '전자정부 성과관리 지침', desc: '정보화사업 사전협의 대상·제외사업·신청 시기. 행정안전부고시 제2026-63호, 2026.10.19.', href: LINKS.egovPerf, cta: '지침 원문' },
   { type: 'digital', label: 'DIGITAL / PROCESS', title: '정보화사업 사전협의제 운영', desc: '행정안전부의 사전협의 안내 페이지와 헬프데스크.', href: LINKS.egovConsult, cta: '행정안전부 안내' },
