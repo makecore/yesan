@@ -479,3 +479,4 @@ fieldset { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
   .table-wrap { overflow: visible; }
   .lecture-body tr, .lecture-body blockquote { break-inside: avoid; }
 }
+.badge.b-sld { background: #ece7fb; color: #5b45b0; }

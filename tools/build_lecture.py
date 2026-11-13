@@ -19,6 +19,7 @@ SRC = ROOT / "docs" / "lectures" / "2026-11-budget-strategy.md"
 OUT = ROOT / "lecture.html"
 
 BADGES = {
+    "[자료]": ("b-sld", "자료"),
     "[강의]": ("b-lec", "강의"),
     "[확인]": ("b-chk", "확인"),
     "[우리 기관]": ("b-org", "우리 기관"),
@@ -65,15 +66,28 @@ TEMPLATE = """<!doctype html>
 
     <footer class="footer section-shell">
       <div><strong>국가예산 나침반</strong><p>강의 녹취를 정리한 참고 자료입니다. 강사의 경험담·관행 설명이 포함되어 있으며 공식 지침이 아닙니다.</p></div>
-      <div class="footer-meta"><span>정리 기준일 2026-11-09</span><a href="index.html">도구로 돌아가기</a><a href="#top">맨 위로 ↑</a></div>
+      <div class="footer-meta"><span>정리 기준일 2026-11-13</span><a href="index.html">도구로 돌아가기</a><a href="#top">맨 위로 ↑</a></div>
     </footer>
   </body>
 </html>
 """
 
 
+def widen_list_indent(text: str) -> str:
+    """하위 목록의 들여쓰기(2칸)를 변환기가 알아보는 4칸으로 넓힙니다. 코드 블록은 건드리지 않습니다."""
+    out, in_code = [], False
+    for line in text.splitlines():
+        if line.lstrip().startswith("```"):
+            in_code = not in_code
+        m = re.match(r"^( +)(- |\d+\. )", line)
+        if not in_code and m:
+            line = " " * (len(m.group(1)) * 2) + line.lstrip(" ")
+        out.append(line)
+    return "\n".join(out) + "\n"
+
+
 def build() -> None:
-    text = SRC.read_text(encoding="utf-8")
+    text = widen_list_indent(SRC.read_text(encoding="utf-8"))
     md = markdown.Markdown(
         extensions=["tables", "fenced_code", "toc", "sane_lists"],
         extension_configs={"toc": {"toc_depth": "2-2"}},
@@ -86,6 +100,7 @@ def build() -> None:
         badge = f'<span class="badge {cls}">{label}</span>'
         body = body.replace(f"<strong>{mark}</strong>", badge)  # 표시만 굵게 쓴 경우
         body = body.replace(f"<strong>{mark} ", f"{badge}<strong>")  # '**[강의] 제목**' 처럼 붙여 쓴 경우
+        body = body.replace(f" {mark}", f" {badge}")  # 제목·표 머리글 끝에 붙인 경우
 
     # 표는 좁은 화면에서 옆으로 밀어 볼 수 있게 감쌉니다.
     body = body.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
