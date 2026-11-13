@@ -628,7 +628,9 @@ function renderLibrary(filter = 'all') {
         <div class="library-type">${item.label}</div>
         <h3>${escapeHtml(item.title)}</h3>
         <p>${escapeHtml(item.desc)}</p>
-        <a href="${item.href}" target="_blank" rel="noopener">${escapeHtml(item.cta)} ↗</a>
+        ${item.internal
+          ? `<a href="${item.href}">${escapeHtml(item.cta)} →</a>`
+          : `<a href="${item.href}" target="_blank" rel="noopener">${escapeHtml(item.cta)} ↗</a>`}
       </article>`).join('');
 }
 
